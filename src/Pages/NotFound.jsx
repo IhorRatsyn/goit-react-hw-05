@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const NotFound = props => {
   return (
     <div>
-
+Not Found
     </div>
   );
 };

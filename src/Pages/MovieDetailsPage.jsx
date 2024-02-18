@@ -1,10 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useParams, Outlet } from "react-router-dom";
 
 const MovieDetailsPage = props => {
+  const {movieId} = useParams();
+
+
   return (
     <div>
-
+Movie details Page{(movieId)}
+      <Outlet />
     </div>
   );
 };
