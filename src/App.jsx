@@ -1,4 +1,4 @@
-import {Routes, Route, NavLink} from "react-router-dom";
+import {Routes, Route, NavLink, Link} from "react-router-dom";
 import clsx from 'clsx';
 import HomePage from "./Pages/HomePage";
 import MoviesPage from "./Pages/MoviesPage";
@@ -7,6 +7,8 @@ import MovieCast from "./Pages/MovieCast";
 import MoviesReviews from "./Pages/MovieReviews";
 import NotFound from "./Pages/NotFound";
 import css from "./App.module.css";
+import {getMovies} from "./axios.js";
+import {useEffect, useState} from "react";
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
@@ -15,6 +17,18 @@ const buildLinkClass = ({ isActive }) => {
 
 
 export const App = () => {
+  const [movies, setMovies] = useState({
+    results: []
+  })
+  useEffect(()=>{
+    getMovies().then((result)=> {
+      setMovies(result)
+      console.log(result)
+    })
+  }, [])
+
+  if(!movies.results.length) return
+
   return (
     <div>
       <nav className={css.nav}>
@@ -43,6 +57,10 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+      {movies.results.map((movie) => (
+        <div><li key={movie.id} movie={movie.title}> {movie.title} </li></div>
+
+      ))}
     </div>
   );
 };
