@@ -1,14 +1,22 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState} from 'react';
+import {getMovies} from "../axios.js";
+import MoviesList from "../components/MoviesList.jsx";
 
-class HomePage extends Component {
-  render() {
+const HomePage = () => {
+  const [movies, setMovies] = useState( [])
+  useEffect(()=>{
+    getMovies().then((result)=> {
+      setMovies(result.results)
+    })
+  }, [])
+
+    if(!movies.length) return
+
     return (
       <div>
-        Home Page
+        <MoviesList movies={movies}/>
       </div>
     );
-  }
 }
 
 HomePage.propTypes = {};

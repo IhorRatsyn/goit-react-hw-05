@@ -18,3 +18,43 @@ export const getMovies = () => {
     .then((response) => response.data)
     .catch((err) => console.error(err));
 };
+
+export const getMoviesSearch = (query) => {
+  return axios
+    .get(`https://api.themoviedb.org/3/search/movie`, {
+      params: {
+        query
+      },
+      ...options
+    })
+    .then((response) => response.data)
+    .catch((err) => console.error(err));
+};
+
+export const getMovie = (id) => {
+  return axios
+    .get(`https://api.themoviedb.org/3/trending/movie/day`, options)
+    .then((response) => response.data)
+    .catch((err) => console.error(err));
+};
+
+export const getMovieDetail = (id) => {
+  return axios
+    .get(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options)
+    .then((response) => response.data)
+    .catch((err) => console.error(err));
+};
+
+export const getMovieCast = (id) => {
+  return axios
+    .get(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`, options)
+    .then((response) => response.data)
+    .catch((err) => console.error(err));
+};
+
+export const getMovieReviews = (id) => {
+  return axios
+    .get(`https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US`, options)
+    .then((response) => response.data)
+    .catch((err) => console.error(err));
+};

@@ -9,6 +9,7 @@ const SearchBar = ({ onSubmit }) => {
     if (inputValue.trim() === "") {
       return;
     }
+
     onSubmit(inputValue);
   };
 

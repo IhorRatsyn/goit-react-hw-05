@@ -1,4 +1,4 @@
-import {Routes, Route, NavLink, Link} from "react-router-dom";
+import {Link, NavLink, Route, Routes} from "react-router-dom";
 import clsx from 'clsx';
 import HomePage from "./Pages/HomePage";
 import MoviesPage from "./Pages/MoviesPage";
@@ -17,37 +17,18 @@ const buildLinkClass = ({ isActive }) => {
 
 
 export const App = () => {
-  const [movies, setMovies] = useState({
-    results: []
-  })
-  useEffect(()=>{
-    getMovies().then((result)=> {
-      setMovies(result)
-      console.log(result)
-    })
-  }, [])
 
-  if(!movies.results.length) return
 
   return (
     <div>
       <nav className={css.nav}>
         <NavLink to="/" className={buildLinkClass}>
-          HomePage
+          Home
         </NavLink>
         <NavLink to="/movies" className={buildLinkClass}>
-          MoviesPage
+          Movies
         </NavLink>
-        <NavLink to="/movies/:movieId" className={buildLinkClass}>
-          MoviesDetailsPage
-        </NavLink>
-        <NavLink to="/movies/:movieId/cast" className={buildLinkClass}>
-          MovieCast
-        </NavLink>
-        <NavLink to="/movies/:movieId/reviews" className={buildLinkClass}>
-          MoviesReviews
-        </NavLink>
-      </nav>;
+      </nav>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
@@ -57,10 +38,6 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {movies.results.map((movie) => (
-        <div><li key={movie.id} movie={movie.title}> {movie.title} </li></div>
-
-      ))}
     </div>
   );
 };
