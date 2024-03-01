@@ -1,0 +1,21 @@
+.movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.movie-title {
+  text-decoration: none;
+  color: #000;
+  padding: 8px;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.movie-title:hover {
+  background-color: #f5f5f5;
+}
