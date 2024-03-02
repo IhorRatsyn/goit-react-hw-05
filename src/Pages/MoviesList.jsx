@@ -6,15 +6,17 @@ import css from "./MoviesList.module.css";
 const MoviesList = ({ movies = [] }) => {
   if (!movies.length) return <div>No movies found</div>;
   return (
-    <div className={css.moviesList}>
+    <div>
       {movies.map((movie) => (
-        <Link
-          to={"/movies/" + movie.id}
-          className={css.movieTitle}
-          key={movie.id}
-        >
-          {movie.title}
-        </Link>
+        <div>
+          <Link
+            to={"/movies/" + movie.id}
+            className={css.movieTitle}
+            key={movie.id}
+          >
+            {movie.title}
+          </Link>
+        </div>
       ))}
     </div>
   );
