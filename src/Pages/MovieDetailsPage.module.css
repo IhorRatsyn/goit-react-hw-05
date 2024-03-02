@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.posterContainer {
+  margin-right: 20px;
+}
+
+.posterImg {
+  width: 350px;
+}
+
+.content {
+  flex: 1;
+}
+
+.topContent {
+  margin-bottom: 10px;
+}
+
+.infoList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.infoList li {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
