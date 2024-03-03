@@ -1,29 +1,36 @@
-import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
-import {useParams} from "react-router-dom";
-import {getMovieCast} from "../axios.js";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
+import { getMovieCast } from "../axios.js";
+import styles from "./MovieCast.module.css";
 
-const MovieCast = props => {
-  const {movieId} = useParams();
-  const [cast, setCast] = useState(null)
+const MovieCast = (props) => {
+  const { movieId } = useParams();
+  const [cast, setCast] = useState(null);
 
   useEffect(() => {
-    getMovieCast(movieId).then((result)=> {
-      setCast(result)
-    })
-  }, [])
-  if (!cast) return
+    getMovieCast(movieId).then((result) => {
+      setCast(result);
+    });
+  }, []);
+  if (!cast) return;
 
   const getimgUrl = (url) => {
-    return `https://image.tmdb.org/t/p/w500/${url}`
-  }
+    return `https://image.tmdb.org/t/p/w500/${url}`;
+  };
 
   return (
-    <div>
+    <div className={styles.MovieCast}>
       <ul>
         {cast.cast.map((actor) => (
           <li key={actor.id}>
-            {actor.profile_path && <img src={getimgUrl(actor.profile_path)} alt={actor.name}/>}
+            {actor.profile_path && (
+              <img
+                className={styles.castImage}
+                src={getimgUrl(actor.profile_path)}
+                alt={actor.name}
+              />
+            )}
             <h4>{actor.name}</h4>
           </li>
         ))}
@@ -32,8 +39,6 @@ const MovieCast = props => {
   );
 };
 
-MovieCast.propTypes = {
-  
-};
+MovieCast.propTypes = {};
 
 export default MovieCast;

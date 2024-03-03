@@ -21,7 +21,9 @@ const MovieDetailsPage = (props) => {
 
   return (
     <div className={styles.container}>
-      <BackButton />
+      <div className={styles.button}>
+        <BackButton />
+      </div>
       <div className={styles.posterContainer}>
         <img
           className={styles.posterImg}
@@ -32,16 +34,16 @@ const MovieDetailsPage = (props) => {
       <div className={styles.content}>
         <div className={styles.topContent}>
           <h1>{movie.title}</h1>
-          <p>User score {movie.vote_average}%</p>
+          <p>User score {movie.vote_average / 0.1}%</p>
           <h3>Overview</h3>
-          <p>{movie.overview}</p>
+          <p className={styles.overview}>{movie.overview}</p>
           <h3>Genres</h3>
           <div>
             {movie.genres.map((genre) => (
               <div key={genre.id}>{genre.name}</div>
             ))}
           </div>
-          <hr />
+          <hr className={styles.hr} />
         </div>
         <div className={styles.infoList}>
           <h3>Adiitional information</h3>

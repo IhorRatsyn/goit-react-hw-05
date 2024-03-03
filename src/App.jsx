@@ -26,7 +26,6 @@ export const App = () => {
           Movies
         </NavLink>
       </nav>
-      <h2>Trending Today</h2>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
