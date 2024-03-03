@@ -13,7 +13,6 @@ const MovieReviews = (props) => {
       setReviews(result.results);
     });
   }, []);
-  if (!reviews.length) return;
 
   return (
     <div className={styles.MovieReviews}>

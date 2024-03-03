@@ -8,12 +8,8 @@ const MoviesList = ({ movies = [] }) => {
   return (
     <div>
       {movies.map((movie) => (
-        <div>
-          <Link
-            to={"/movies/" + movie.id}
-            className={css.movieTitle}
-            key={movie.id}
-          >
+        <div key={movie.id}>
+          <Link to={"/movies/" + movie.id} className={css.movieTitle}>
             {movie.title}
           </Link>
         </div>
