@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieCast, getMovieReviews } from "../axios.js";
+import { getMovieReviews } from "../axios.js";
 import styles from "./MovieReviews.module.css";
 
 const MovieReviews = (props) => {
