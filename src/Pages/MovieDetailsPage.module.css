@@ -40,3 +40,7 @@
 .button {
   margin-top: 5px;
 }
+
+.overview {
+  max-width: 90%;
+}
