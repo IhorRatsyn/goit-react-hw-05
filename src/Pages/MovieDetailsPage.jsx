@@ -24,14 +24,14 @@ const MovieDetailsPage = (props) => {
       <div className={styles.button}>
         <BackButton />
       </div>
-      <div className={styles.posterContainer}>
-        <img
-          className={styles.posterImg}
-          src={getImgUrl(movie.poster_path)}
-          alt={movie.title}
-        />
-      </div>
-      <div className={styles.content}>
+      <div className={styles.mainContent}>
+        <div className={styles.posterContainer}>
+          <img
+            className={styles.posterImg}
+            src={getImgUrl(movie.poster_path)}
+            alt={movie.title}
+          />
+        </div>
         <div className={styles.topContent}>
           <h1>{movie.title}</h1>
           <p>User score {movie.vote_average / 0.1}%</p>
@@ -44,6 +44,8 @@ const MovieDetailsPage = (props) => {
             ))}
           </div>
         </div>
+      </div>
+      <div className={styles.content}>
         <div className={styles.infoList}>
           <h3>Adiitional information</h3>
           <ul>
