@@ -43,7 +43,6 @@ const MovieDetailsPage = (props) => {
               <div key={genre.id}>{genre.name}</div>
             ))}
           </div>
-          <hr className={styles.hr} />
         </div>
         <div className={styles.infoList}>
           <h3>Adiitional information</h3>
