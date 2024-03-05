@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getMovies } from "../axios.js";
-import MoviesList from "./MoviesList.jsx";
+import MoviesList from "./MoviesList.jsx.js";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
