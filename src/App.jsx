@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
 import clsx from "clsx";
-import HomePage from "./Pages/HomePage";
-import MoviesPage from "./Pages/MoviesPage";
-import MoviesDetailsPage from "./Pages/MovieDetailsPage";
-import MovieCast from "./Pages/MovieCast";
-import MoviesReviews from "./Pages/MovieReviews";
-import NotFound from "./Pages/NotFound";
+import HomePage from "./pages/HomePage";
+import MoviesPage from "./pages/MoviesPage";
+import MoviesDetailsPage from "./pages/MovieDetailsPage";
+import MovieCast from "./pages/MovieCast";
+import MoviesReviews from "./pages/MovieReviews";
+import NotFound from "./pages/NotFound";
 import css from "./App.module.css";
 import { getMovies } from "./axios.js";
 import { useEffect, useState } from "react";
