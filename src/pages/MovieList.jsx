@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import css from "./MoviesList.module.css";
+import css from "./MovieList.module.css";
 
-const MoviesList = ({ movies = [] }) => {
+const MovieList = ({ movies = [] }) => {
   if (!movies.length) return <div>No movies found</div>;
   return (
     <div>
@@ -18,8 +18,8 @@ const MoviesList = ({ movies = [] }) => {
   );
 };
 
-MoviesList.propTypes = {
+MovieList.propTypes = {
   movies: PropTypes.array.isRequired,
 };
 
-export default MoviesList;
+export default MovieList;

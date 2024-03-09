@@ -11,7 +11,7 @@ const MovieReviews = (props) => {
     getMovieReviews(movieId).then((result) => {
       setReviews(result.results);
     });
-  }, []);
+  }, [movieId]);
 
   return (
     <div className={styles.MovieReviews}>

@@ -11,7 +11,7 @@ const MovieCast = (props) => {
     getMovieCast(movieId).then((result) => {
       setCast(result);
     });
-  }, []);
+  }, [movieId]);
   if (!cast) return;
 
   const getimgUrl = (url) => {

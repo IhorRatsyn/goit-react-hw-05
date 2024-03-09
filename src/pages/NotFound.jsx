@@ -1,16 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
-const NotFound = props => {
-  return (
-    <div>
-Not Found
-    </div>
-  );
+const NotFound = (props) => {
+  return <div>Not Found</div>;
 };
 
-NotFound.propTypes = {
-  
-};
+NotFound.propTypes = {};
 
 export default NotFound;

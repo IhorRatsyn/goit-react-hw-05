@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getMovies } from "../axios.js";
-import MoviesList from "./MoviesList.jsx";
+import MovieList from "./MovieList.jsx";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <div>
       <h2>Trending Today</h2>
-      <MoviesList movies={movies} />
+      <MovieList movies={movies} />
     </div>
   );
 };

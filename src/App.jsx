@@ -1,31 +1,18 @@
-import React from "react";
-import { Link, NavLink, Route, Routes } from "react-router-dom";
-import clsx from "clsx";
-import HomePage from "./pages/HomePage";
-import MoviesPage from "./pages/MoviesPage";
-import MoviesDetailsPage from "./pages/MovieDetailsPage";
-import MovieCast from "./pages/MovieCast";
-import MoviesReviews from "./pages/MovieReviews";
-import NotFound from "./pages/NotFound";
-import css from "./App.module.css";
-import { getMovies } from "./axios.js";
-import { useEffect, useState } from "react";
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-const buildLinkClass = ({ isActive }) => {
-  return clsx(css.link, isActive && css.active);
-};
+const HomePage = React.lazy(() => import("./pages/HomePage"));
+const MoviesPage = React.lazy(() => import("./pages/MoviesPage"));
+const MoviesDetailsPage = React.lazy(() => import("./pages/MovieDetailsPage"));
+const MovieCast = React.lazy(() => import("./pages/MovieCast"));
+const MoviesReviews = React.lazy(() => import("./pages/MovieReviews"));
+const NotFound = React.lazy(() => import("./pages/NotFound"));
+const Navigation = React.lazy(() => import("./pages/Navigation"));
 
-export const App = () => {
+const App = () => {
   return (
-    <div className={css.container}>
-      <nav className={css.nav}>
-        <NavLink to="/" className={buildLinkClass}>
-          Home
-        </NavLink>
-        <NavLink to="/movies" className={buildLinkClass}>
-          Movies
-        </NavLink>
-      </nav>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
@@ -35,7 +22,7 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </div>
+    </Suspense>
   );
 };
 

@@ -12,7 +12,7 @@ const MovieDetailsPage = (props) => {
     getMovieDetail(movieId).then((result) => {
       setMovie(result);
     });
-  }, []);
+  }, [movieId]);
 
   const getImgUrl = (url) => {
     return `https://image.tmdb.org/t/p/w500/${url}`;

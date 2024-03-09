@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import SearchBar from "../SearchBar.jsx";
-import MoviesList from "./MoviesList.jsx";
+import MovieList from "./MovieList.jsx";
 import { getMovies, getMoviesSearch } from "../axios.js";
 
 const MoviesPage = (props) => {
@@ -15,7 +14,7 @@ const MoviesPage = (props) => {
   return (
     <div>
       <SearchBar onSubmit={setQuery} />
-      <MoviesList movies={movies} />
+      <MovieList movies={movies} />
     </div>
   );
 };
