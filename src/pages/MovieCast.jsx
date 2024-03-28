@@ -5,23 +5,37 @@ import styles from "./MovieCast.module.css";
 
 const MovieCast = (props) => {
   const { movieId } = useParams();
-  const [cast, setCast] = useState(null);
+  const [cast, setCast] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getMovieCast(movieId).then((result) => {
-      setCast(result);
-    });
+    setLoading(true);
+    getMovieCast(movieId)
+      .then((result) => {
+        setCast(result.cast);
+        setLoading(false);
+        setError(null);
+      })
+      .catch((error) => {
+        console.error("Error fetching movie cast:", error);
+        setLoading(false);
+        setError("Error fetching movie cast. Please try again later.");
+      });
   }, [movieId]);
-  if (!cast) return;
 
   const getimgUrl = (url) => {
     return `https://image.tmdb.org/t/p/w500/${url}`;
   };
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+  if (!cast || cast.length === 0) return <p>No cast information available</p>;
+
   return (
     <div className={styles.MovieCast}>
       <ul>
-        {cast.cast.map((actor) => (
+        {cast.map((actor) => (
           <li key={actor.id}>
             {actor.profile_path && (
               <img

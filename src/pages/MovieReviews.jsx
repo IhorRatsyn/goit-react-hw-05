@@ -6,16 +6,29 @@ import styles from "./MovieReviews.module.css";
 const MovieReviews = (props) => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getMovieReviews(movieId).then((result) => {
-      setReviews(result.results);
-    });
+    setLoading(true);
+    getMovieReviews(movieId)
+      .then((result) => {
+        setReviews(result.results);
+        setLoading(false);
+        setError(null);
+      })
+      .catch((error) => {
+        console.error("Error fetching movie reviews:", error);
+        setLoading(false);
+        setError("Error fetching movie reviews. Please try again later.");
+      });
   }, [movieId]);
 
   return (
     <div className={styles.MovieReviews}>
-      {reviews.length ? (
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {!loading && !error && reviews.length ? (
         <ul>
           {reviews.map((review) => (
             <li key={review.id}>

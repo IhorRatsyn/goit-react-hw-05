@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Outlet, Link } from "react-router-dom";
+import {
+  useParams,
+  Outlet,
+  Link,
+  NavLink,
+  useLocation,
+  useRef,
+} from "react-router-dom";
 import { getMovieDetail } from "../axios.js";
 import BackButton from "../components/BackButton.jsx";
 import styles from "./MovieDetailsPage.module.css";
 
-const MovieDetailsPage = (props) => {
+const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
 
@@ -17,12 +24,16 @@ const MovieDetailsPage = (props) => {
   const getImgUrl = (url) => {
     return `https://image.tmdb.org/t/p/w500/${url}`;
   };
-  if (!movie) return;
+
+  const location = useLocation();
+  const backButtonRef = useRef(null);
+
+  if (!movie) return null;
 
   return (
     <div className={styles.container}>
       <div className={styles.button}>
-        <BackButton />
+        <BackButton ref={backButtonRef} />
       </div>
       <div className={styles.mainContent}>
         <div className={styles.posterContainer}>
@@ -47,14 +58,29 @@ const MovieDetailsPage = (props) => {
       </div>
       <div className={styles.content}>
         <div className={styles.infoList}>
-          <h3>Adiitional information</h3>
+          <h3>Additional information</h3>
           <ul>
             <li>
-              <Link to={`/movies/${movie.id}/reviews`}>Reviews</Link>
+              <NavLink
+                to={{
+                  pathname: `/movies/${movie.id}/reviews`,
+                  state: { from: location },
+                }}
+                activeClassName={styles.activeLink}
+              >
+                Reviews
+              </NavLink>
             </li>
             <li>
-              {" "}
-              <Link to={`/movies/${movie.id}/cast`}>Cast</Link>
+              <NavLink
+                to={{
+                  pathname: `/movies/${movie.id}/cast`,
+                  state: { from: location },
+                }}
+                activeClassName={styles.activeLink}
+              >
+                Cast
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -63,7 +89,5 @@ const MovieDetailsPage = (props) => {
     </div>
   );
 };
-
-MovieDetailsPage.propTypes = {};
 
 export default MovieDetailsPage;
